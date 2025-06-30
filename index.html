@@ -4,36 +4,55 @@
   <title>Keyword Detector</title>
 </head>
 <body style="background:rgb(245, 245, 245); font-family:sans-serif; text-align:center;">
-  <h1> Keyword Detector</h1>
-  <button onclick="startListening()" style="background-color: rgb(6, 94, 188); color:
-   whitesmoke; border-radius: 6px; padding: 10px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-   Start Listening</button>
-  <p id="timer">Waiting...</p> 
-    <div style="display: flex;justify-content: center;align-items: center;border: 1px solid #7c7a7a;
-    border-radius: 8px;padding: 16px;margin: 0 auto 16px auto;width: fit-content;background: #fff;">
-    <button style="padding: 12px; border-radius: 6px; background-color: brown; margin: 4px; color: white;">Stop</button>
-    <button style="padding: 12px; border-radius: 6px; background-color: #b8e5e5; margin: 4px;">Continue</button>
+  <h1>Keyword Detector</h1>
+  
+  <button onclick="startListening()" 
+    style="background-color: rgb(6, 94, 188); color: whitesmoke; border-radius: 6px; padding: 10px;">
+    Start Listening
+  </button>
+  
+  <p id="timer">Idle</p> 
+
+  <div style="display: flex; justify-content: center; align-items: center; border: 1px solid #7c7a7a;
+      border-radius: 8px; padding: 16px; margin: 0 auto 16px auto; width: fit-content; background: #fff;">
+    <button onclick="stopListening()" 
+      style="padding: 12px; border-radius: 6px; background-color: brown; margin: 4px; color: white;">
+      Stop
+    </button>
+    <button disabled
+      style="padding: 12px; border-radius: 6px; background-color: #b8e5e5; margin: 4px;">
+      Continue
+    </button>
   </div>
-   <!-- <h3>You said:</h3> -->
+
   <div id="transcript"></div>
-  <!-- <h3>Detected keywords:</h3> -->
   <div id="keywords"></div> 
+
   <script>
     async function startListening() {
       document.getElementById("timer").innerText = "Listening...";
       document.getElementById("transcript").innerText = "";
       document.getElementById("keywords").innerText = "";
-      let seconds = 10; 
-      const interval = setInterval(() => { 
-        document.getElementById("timer").innerText = `Listening... ${seconds}s left`;
-        seconds--;
-        if (seconds < 0) clearInterval(interval);
-      }, 1000);
-      const response = await fetch("http://localhost:5000/listen");
-      const data = await response.json();
-      document.getElementById("timer").innerText = "Done!";
-      document.getElementById("transcript").innerText = data.transcript.join("\n");
-      document.getElementById("keywords").innerText = data.keywords.join(",");
+      try {
+        await fetch("http://localhost:5000/start");
+      } catch (err) {
+        alert("Failed to start listening. Is your Flask server running?");
+        console.error(err);
+      }
+    }
+
+    async function stopListening() {
+      document.getElementById("timer").innerText = "Stopping...";
+      try {
+        const response = await fetch("http://localhost:5000/stop");
+        const data = await response.json();
+        document.getElementById("timer").innerText = "Stopped";
+        document.getElementById("transcript").innerText = "Transcript:\n" + data.transcript.join("\n");
+        document.getElementById("keywords").innerText = "Keywords: " + data.keywords.join(", ");
+      } catch (err) {
+        alert("Failed to stop listening.");
+        console.error(err);
+      }
     }
   </script>
 </body>
