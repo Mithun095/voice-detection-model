@@ -46,6 +46,10 @@ def listen_loop():
                             if word in words and word not in results["keywords"]:
                                 results["keywords"].append(word)
                                 print(f"🔔 Detected: {word}")
+                                if word == "stop":
+                                    print("🛑 Listening stopped")
+                                    listening = False
+                                    return
             except queue.Empty:
                 continue
         print("🛑 Listening stopped")
