@@ -24,7 +24,7 @@ q = queue.Queue()
 # Store final results and control flags
 results = {"transcript": [], "keywords": []}
 listening = False
-keywords = ["yes", "no", "correct", "wrong", "next", "okay", "cancel", "back", "start", "stop", "exit"]
+keywords = ["yes","no","left","right","up","down","next","cancel","back","start","stop","exit"]
 # Load reference speaker embedding
 print("🔐 Loading voice reference from public/reference_embedding.npy")
 reference_embedding = np.load("public/reference_embedding.npy")
@@ -122,7 +122,6 @@ def listen_loop():
 
     print("🛑 Listening stopped")
 
-
 # Route to start listening
 @app.route("/start", methods=["GET"])
 def start_listening():
@@ -140,7 +139,7 @@ def stop_listening():
     # Wait briefly to let the last chunk process
     time.sleep(1)
     log_entry = {
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S") ,
         "transcript": results["transcript"],
         "keywords": results["keywords"]
     }
