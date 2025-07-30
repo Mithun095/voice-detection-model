@@ -3,3 +3,5 @@ hindimodel/
 app.py
 hehe.py
 session_log.jsonl
+reference_embedding.npy
+reference.wav
