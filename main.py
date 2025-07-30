@@ -15,7 +15,7 @@ import threading
 # === CONFIG ===
 VOSK_MODEL_PATH = "modelins"
 REFERENCE_EMBEDDING_PATH = "public/reference_embedding.npy"
-SPEAKER_THRESHOLD = 0.68  # Adjust for your environment
+SPEAKER_THRESHOLD = 0.69  # Adjust for your environment
 KEYWORDS = ["yes", "no", "left", "right", "up", "down", "next", "cancel", "back", "start", "stop", "exit"]
 
 # === FLASK SETUP ===
@@ -26,7 +26,7 @@ CORS(app)
 print("🧠 Loading Vosk model...")
 vosk_model = Model(VOSK_MODEL_PATH)
 
-# ✅ Limit recognizer to specific keywords only using grammar
+# Limit recognizer to specific keywords only using grammar
 grammar = f'["{" ".join(KEYWORDS)}"]'
 recognizer = KaldiRecognizer(vosk_model, 16000, grammar)
 

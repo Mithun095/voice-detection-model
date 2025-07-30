@@ -35,5 +35,5 @@ recording = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1
 sd.wait()
 
 # Save the recording in the public folder
-sf.write("public/reference1.wav", recording, samplerate)
+sf.write("public/reference.wav", recording, samplerate)
 print("✅ Saved as public/reference.wav")
