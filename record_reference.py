@@ -25,7 +25,9 @@ print(
     "No, don’t press cancel now — we’re almost finished.\n"
     "Click back if you need to review the previous instructions.\n"
     "We need to start again — something went wrong.\n"
-    "To end the session, simply press stop and then exit."
+    "To end the session, simply press stop and then exit.\n"
+ "\n"
+ "if you are done reading this start reading again until it stops "
 )
 
 
