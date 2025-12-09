@@ -1,2 +1,71 @@
-Indian English model for mobile Vosk applications
+# Vosk Model: Indian English (Small)
 
+## Model Information
+
+| Property | Value |
+|----------|-------|
+| **Name** | vosk-model-small-en-in |
+| **Language** | English (Indian Accent) |
+| **Size** | ~50MB |
+| **Type** | Mobile/Lightweight |
+| **Sample Rate** | 16kHz |
+
+## Description
+
+This is a small-footprint Vosk speech recognition model optimized for:
+
+- 🇮🇳 **Indian English accent** — Trained on Indian English speakers
+- 📱 **Mobile devices** — Lightweight and fast inference
+- ⚡ **Real-time applications** — Low latency recognition
+- 💾 **Limited resources** — Works on devices with limited RAM
+
+## Usage
+
+This model is used by the Keyword Detector application for speech-to-text conversion.
+It's loaded automatically when you run `main.py`.
+
+### In Python
+
+```python
+from vosk import Model, KaldiRecognizer
+
+model = Model("modelins")
+recognizer = KaldiRecognizer(model, 16000)
+```
+
+## Directory Structure
+
+```
+modelins/
+├── README          # This file
+├── am/             # Acoustic model
+├── conf/           # Configuration files
+├── graph/          # Decoding graph
+└── ivector/        # i-vector extractor
+```
+
+## Source
+
+Downloaded from [Vosk Models](https://alphacephei.com/vosk/models)
+
+Model: `vosk-model-small-en-in-0.4`
+
+## Naming Convention
+
+The project uses the following model naming convention:
+
+| Name | Meaning |
+|------|---------|
+| `modelins` | *model* + *in* (Indian) + *s* (small) |
+| `modelinb` | *model* + *in* (Indian) + *b* (big) |
+| `hindimodel` | Hindi language model |
+
+## License
+
+Apache 2.0 License (same as Vosk)
+
+## Links
+
+- [Vosk Project](https://alphacephei.com/vosk/)
+- [Vosk Models Repository](https://alphacephei.com/vosk/models)
+- [Vosk GitHub](https://github.com/alphacep/vosk-api)
