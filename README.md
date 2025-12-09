@@ -9,7 +9,6 @@ Detect specific keywords from an authorized speaker only — perfect for persona
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.0%2B-green?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![Vosk](https://img.shields.io/badge/Vosk-Speech%20Recognition-orange)](https://alphacephei.com/vosk/)
-[![License](https://img.shields.io/badge/License-MIT-purple)](LICENSE)
 
 </div>
 
@@ -246,20 +245,10 @@ keyword_detector/
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Vosk](https://alphacephei.com/vosk/) — Offline speech recognition
 - [Resemblyzer](https://github.com/resemble-ai/Resemblyzer) — Speaker verification
 - [Flask](https://flask.palletsprojects.com/) — Web framework
 
 ---
-
-<div align="center">
-Made with ❤️ for voice-controlled applications
-</div>
