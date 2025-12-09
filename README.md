@@ -14,6 +14,14 @@ Detect specific keywords from an authorized speaker only — perfect for persona
 
 ---
 
+## 📚 Documentation
+
+For comprehensive project documentation including technical deep-dives, code explanations, and **interview preparation questions**, see:
+
+📖 **[DOCUMENTATION.md](./DOCUMENTATION.md)** — Complete technical documentation & interview prep guide
+
+---
+
 ## ✨ Features
 
 - 🔐 **Speaker Verification** — Only responds to the registered user's voice
