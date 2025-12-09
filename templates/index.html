@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Detector | Voice Command Recognition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="bg-animation"></div>
+  
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">🎙️</div>
+        <h1>Keyword Detector</h1>
+      </div>
+      <p class="subtitle">Speaker-verified voice command recognition</p>
+    </header>
+
+    <!-- Main Control -->
+    <div class="control-card">
+      <div class="status-section">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-text" id="statusText">Ready to listen</span>
+      </div>
+
+      <button class="btn-main btn-start" id="mainBtn" onclick="toggleListening()">
+        <span id="btnIcon">▶️</span>
+        <span id="btnText">Start Listening</span>
+      </button>
+
+      <div class="verification-section">
+        <div class="verification-label">Speaker Verification</div>
+        <div class="verification-bar">
+          <div class="verification-fill" id="verificationFill" style="width: 0%"></div>
+        </div>
+        <div class="verification-value">
+          <span id="verificationStatus">Not verified</span>
+          <span id="similarityValue">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Transcript -->
+    <div class="transcript-card">
+      <div class="card-header">
+        <div class="card-icon">💬</div>
+        <span class="card-title">Live Transcript</span>
+      </div>
+      <div class="partial-text" id="partialText">Waiting for speech...</div>
+      <div class="transcript-list" id="transcriptList"></div>
+    </div>
+
+    <!-- Keywords -->
+    <div class="keywords-section">
+      <div class="card-header">
+        <div class="card-icon">🔑</div>
+        <span class="card-title">Keywords</span>
+      </div>
+      
+      <div class="keywords-grid" id="keywordsGrid"></div>
+
+      <div class="last-keyword" id="lastKeywordSection" style="display: none;">
+        <div class="last-keyword-label">Last Detected</div>
+        <div class="last-keyword-value" id="lastKeywordValue">-</div>
+      </div>
+    </div>
+
+    <footer>
+      Keyword Detector v2.0
+    </footer>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

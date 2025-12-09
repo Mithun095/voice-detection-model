@@ -49,7 +49,16 @@ from config import (
 # ===========================================
 # FLASK SETUP
 # ===========================================
-app = Flask(__name__)
+# Get the base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Configure Flask with template and static folders
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, 'templates'),
+    static_folder=os.path.join(BASE_DIR, 'static'),
+    static_url_path='/static'
+)
 CORS(app)
 
 
@@ -106,7 +115,8 @@ load_models()
 @app.route("/", methods=["GET"])
 def index():
     """Serve the web interface."""
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), "index.html")
+    from flask import render_template
+    return render_template("index.html")
 
 
 @app.route("/info", methods=["GET"])

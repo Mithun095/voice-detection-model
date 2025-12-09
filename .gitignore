@@ -41,11 +41,6 @@ session_log.jsonl
 public/reference.wav
 public/reference_embedding.npy
 
-# Alternative Models (not needed for default setup)
-# Uncomment if you want to track these in git
-modelinb/
-hindimodel/
-
 # OS Files
 .DS_Store
 Thumbs.db

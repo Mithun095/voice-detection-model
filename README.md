@@ -20,7 +20,7 @@ Detect specific keywords from an authorized speaker only — perfect for persona
 - 🎯 **Keyword Detection** — Recognizes predefined command keywords
 - 🇮🇳 **Indian English Support** — Optimized for Indian accent (Vosk model)
 - 🌐 **REST API** — Simple Flask-based API for integration
-- 🖥️ **Web Interface** — Ready-to-use HTML interface for testing
+- 🖥️ **Web Interface** — Modern dark-themed UI with real-time updates
 - ⚡ **Real-time Processing** — Low-latency voice recognition
 - 📝 **Session Logging** — Automatic logging of detected keywords
 
@@ -105,7 +105,7 @@ python main.py
 
 ### 7. Open Web Interface
 
-Open `index.html` in your browser, or visit: `http://localhost:5000`
+Visit: `http://localhost:5000`
 
 ---
 
@@ -113,7 +113,7 @@ Open `index.html` in your browser, or visit: `http://localhost:5000`
 
 ### Web Interface
 
-1. Open `index.html` in your browser
+1. Open `http://localhost:5000` in your browser
 2. Click **"Start Listening"**
 3. Speak keywords naturally
 4. Click **"Stop"** to see results
@@ -122,9 +122,11 @@ Open `index.html` in your browser, or visit: `http://localhost:5000`
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
+| `/` | GET | Web interface |
 | `/start` | GET | Start listening for keywords |
 | `/stop` | GET | Stop listening, return results |
-| `/status` | GET | Get current listener status |
+| `/status` | GET | Get real-time listener status |
+| `/info` | GET | API information |
 
 ### Example API Usage
 
@@ -164,7 +166,7 @@ All settings are in `config.py`:
 ```python
 # Speaker verification threshold (0.0 - 1.0)
 # Higher = stricter matching
-SPEAKER_THRESHOLD = 0.69
+SPEAKER_MIN_SIMILARITY = 0.55
 
 # Keywords to detect
 KEYWORDS = ["yes", "no", "left", "right", ...]
@@ -179,19 +181,27 @@ VOSK_MODEL_PATH = "modelins"  # Indian English Small
 
 ```
 keyword_detector/
-├── main.py                 # Flask server + keyword detection
-├── config.py               # Configuration settings
-├── generate_embedding.py   # Voice embedding generator
-├── record_reference.py     # Reference voice recorder
-├── requirements.txt        # Python dependencies
-├── index.html              # Web interface
-├── README.md               # This file
+├── main.py                     # Flask server + keyword detection
+├── config.py                   # Configuration settings
+├── generate_embedding.py       # Voice embedding generator
+├── record_reference.py         # Reference voice recorder
+├── requirements.txt            # Python dependencies
+├── README.md                   # This file
 │
-├── public/                 # Generated assets
-│   ├── reference.wav       # Your voice recording
-│   └── reference_embedding.npy  # Voice signature
+├── templates/                  # HTML templates
+│   └── index.html              # Web interface
 │
-└── modelins/               # Vosk model (Indian English Small)
+├── static/                     # Static assets
+│   ├── css/
+│   │   └── style.css           # Stylesheet
+│   └── js/
+│       └── app.js              # Frontend JavaScript
+│
+├── public/                     # Generated assets
+│   ├── reference.wav           # Your voice recording
+│   └── reference_embedding.npy # Voice signature
+│
+└── modelins/                   # Vosk model (Indian English Small)
     ├── README
     ├── am/
     ├── conf/
